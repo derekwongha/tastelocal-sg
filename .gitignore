@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Python environments
+.venv/
+.venv-*/
+venv/
+env/
+ENV/
+
+# Django/local data
+*.sqlite3
+*.sqlite
+*.db
+*.log
+logs/
+media/
+staticfiles/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node/Vite
+node_modules/
+dist/
+dist-ssr/
+build/
+.vite/
+coverage/
+
+# IDE/editor
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary/backup
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+.cache/
+
+# Database dumps and archives
+*.sql
+*.dump
+*.bak.sql
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+
+# Internal project material
+evidence/
+_evidence/
+PROJECT_STATUS.md
+testing/
+PORTFOLIO_FINAL_INTEGRATION_AUDIT.md
+SECURITY_CONTAINMENT_REPORT.md
+SECURITY_CONTAINMENT_VERIFICATION.md
+TASTELOCAL_GITHUB_PUBLICATION_INVENTORY.md
