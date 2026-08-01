@@ -1,20 +1,47 @@
 # TasteLocal SG
 
-## 1. Project Title and Summary
+TasteLocal SG is a full-stack Singapore food-tourism platform that helps **Tourists** discover and plan local experiences, **Vendors** manage listings and booking requests, and **Administrators** moderate platform operations.
 
-**TasteLocal SG** is a full-stack Singapore food-tourism capstone connecting Tourists, Vendors, and Administrators.
+Built with **React**, **Django REST Framework**, and **MySQL**, the project covers booking workflows, itinerary planning, optional Google Maps discovery, and Gemini-assisted recommendations with a deterministic fallback. The verified backend suite passes **101 tests**, and the frontend installation, production build, lint, and development startup checks all pass.
 
-Tourists can discover local food experiences, submit booking requests, review completed experiences, and organize itineraries. Approved Vendors manage their listings, availability, and booking decisions. Administrators oversee vendor approvals, categories, listings, reviews, and users.
+> Portfolio project · Three role-based workflows · 101/101 backend tests passed · Frontend build verified
 
-The application does not process payments.
+## Portfolio Highlights
 
-## 2. Portfolio Status
+- **End-to-end role workflows:** Tourist discovery, booking, reviews, and itinerary planning; Vendor listing, availability, and booking management; Administrator approval and moderation tools.
+- **Full-stack architecture:** React/Vite single-page application, Django REST Framework API, MySQL persistence, JWT authentication, and role/ownership enforcement.
+- **Resilient integrations:** Optional Google Maps interface with a non-map fallback, plus backend-only Gemini recommendations grounded in public catalogue records with a deterministic fallback.
+- **Verified implementation:** Django system check passed, 101 backend tests passed, and frontend clean installation, production build, lint, and startup checks passed.
+- **Publication safety:** Environment templates contain placeholders, local secrets and generated files are ignored, and controlled image provenance is documented.
 
-TasteLocal SG is designed for local demonstration and is being prepared for portfolio publication. The project will be presented through its GitHub source, curated screenshots, and a short local demo video.
+## Table of Contents
+
+- [Portfolio Status](#portfolio-status)
+- [Problem and Intended Users](#problem-and-intended-users)
+- [Main Features](#main-features)
+- [User Roles](#user-roles)
+- [Technology Stack](#technology-stack)
+- [System Architecture](#system-architecture)
+- [Project Structure](#project-structure)
+- [Local Setup](#local-setup)
+- [Environment Variables](#environment-variables)
+- [Database and Controlled Demo Data](#database-and-controlled-demo-data)
+- [API Overview](#api-overview)
+- [Testing and Verification](#testing-and-verification)
+- [External Integrations and Fallbacks](#external-integrations-and-fallbacks)
+- [Known Limitations](#known-limitations)
+- [AI-Assisted Development Disclosure](#ai-assisted-development-disclosure)
+- [Screenshots and Demo](#screenshots-and-demo)
+- [Licence](#licence)
+- [Contact](#contact)
+
+## Portfolio Status
+
+TasteLocal SG is a portfolio-ready local demonstration project. Its source is published in the [TasteLocal SG GitHub repository](https://github.com/derekwongha/tastelocal-sg). Curated screenshots and a short local demo video are planned as separate presentation assets.
 
 The Django/MySQL application is not publicly deployed. Production deployment is not required for this portfolio project.
 
-## 3. Problem and Intended Users
+## Problem and Intended Users
 
 Food-focused visitors need a simple way to find and organize local experiences, while independent hosts need a focused workflow for publishing availability and responding to booking requests. TasteLocal SG explores that workflow through three roles:
 
@@ -24,7 +51,7 @@ Food-focused visitors need a simple way to find and organize local experiences, 
 
 The project uses controlled synthetic data for demonstration. It does not claim real customers, commercial vendors, or live business use.
 
-## 4. Main Features
+## Main Features
 
 - Tourist and Vendor registration, JWT login, token refresh, logout, and profile access.
 - Public browsing of published food experiences.
@@ -42,7 +69,7 @@ The project uses controlled synthetic data for demonstration. It does not claim 
 
 There is no payment gateway, checkout, or financial transaction workflow.
 
-## 5. User Roles
+## User Roles
 
 | Role | Main access |
 |---|---|
@@ -52,7 +79,7 @@ There is no payment gateway, checkout, or financial transaction workflow.
 
 Backend permissions enforce authentication, role, Vendor approval status, and record ownership where applicable. Frontend route controls support the user experience but are not treated as the security boundary.
 
-## 6. Technology Stack
+## Technology Stack
 
 Backend versions were verified in the current copied workspace on 31 July 2026. Frontend versions were verified through a clean installation in the current copied workspace on 1 August 2026.
 
@@ -86,7 +113,7 @@ Backend versions were verified in the current copied workspace on 31 July 2026. 
 - Google Maps JavaScript API.
 - Gemini using the current `gemini-2.5-flash` model.
 
-## 7. System Architecture
+## System Architecture
 
 ```text
 Browser
@@ -108,9 +135,7 @@ MySQL
 
 The React single-page application calls the Django REST API over JSON. Django applies access rules and persists relational data through the ORM. Google Maps runs in the browser when configured. Gemini is called only by the backend; returned identifiers are checked against public database records before a response is built. If Gemini is unavailable or unconfigured, the backend returns deterministic catalogue-based recommendations and identifies the fallback state.
 
-A portfolio architecture diagram will be added later after final review.
-
-## 8. Project Structure
+## Project Structure
 
 ```text
 TasteLocalSG/
@@ -152,9 +177,9 @@ TasteLocalSG/
 
 Internal audits, raw evidence, testing chronology, generated dependencies, builds, caches, and local environments are not part of the intended public repository.
 
-## 9. Local Setup
+## Local Setup
 
-These instructions describe the intended local setup. This copied portfolio workspace has not yet been verified from a clean machine; the full setup, tests, build, and lint will be rerun before publication.
+These instructions describe the verified local setup path. In the copied portfolio workspace, the Django system check and all 101 backend tests passed, while the frontend clean installation, production build, lint, and development startup checks also passed. The application remains intended for local demonstration rather than public deployment.
 
 ### Prerequisites
 
@@ -217,7 +242,7 @@ npm run dev
 
 The frontend example points to the local backend API. A Google Maps key may be added to the local `.env`; it is optional because the UI provides fallback behavior.
 
-## 10. Environment Variables
+## Environment Variables
 
 Copy each `.env.example` file to `.env` in the same directory. Real `.env` files are local-only and ignored.
 
@@ -245,7 +270,7 @@ Copy each `.env.example` file to `.env` in the same directory. Real `.env` files
 
 No Gemini model environment variable is used by the current source. If Gemini is not configured, recommendations use the deterministic fallback. If Google Maps is not configured or cannot load, the application retains non-map discovery and fallback messaging.
 
-## 11. Database and Controlled Demo Data
+## Database and Controlled Demo Data
 
 TasteLocal SG uses MySQL 8 through the Django ORM and source-controlled Django migrations.
 
@@ -253,7 +278,7 @@ The recommended public setup path is the `seed_demo_data` management command. It
 
 No demo usernames, passwords, email addresses, physical addresses, or contact numbers are documented here.
 
-## 12. API Overview
+## API Overview
 
 All application endpoints are under `/api/`. Representative routes include:
 
@@ -285,7 +310,7 @@ The recommendation endpoint is public. It limits its source set to publicly visi
 
 Authenticated routes additionally enforce the relevant role, Vendor approval, and ownership boundaries.
 
-## 13. Testing and Verification
+## Testing and Verification
 
 Current copied-workspace backend verification on 1 August 2026 recorded:
 
@@ -306,7 +331,7 @@ The backend test suite covers application models, API behavior, access rules, wo
 
 Full internal testing chronology is intentionally not published here.
 
-## 14. External Integrations and Fallbacks
+## External Integrations and Fallbacks
 
 ### Google Maps
 
@@ -318,7 +343,7 @@ Gemini is called from the Django backend using the optional `GEMINI_API_KEY`; th
 
 When Gemini is unavailable, unconfigured, times out, or returns unusable data, the endpoint uses a deterministic catalogue-based fallback and identifies that state. Fallback output is not described as live Gemini output.
 
-## 15. Known Limitations
+## Known Limitations
 
 - The application is intended for local demonstration and is not publicly deployed.
 - No payment processing or checkout is implemented.
@@ -332,7 +357,7 @@ When Gemini is unavailable, unconfigured, times out, or returns unusable data, t
 - Maps and Gemini behavior depends on optional external configuration and provider availability; both have fallback behavior.
 - Public deployment configuration and production hardening are outside the current portfolio scope.
 
-## 16. AI-Assisted Development Disclosure
+## AI-Assisted Development Disclosure
 
 The project owner defined and refined the requirements, planned the user workflows and design, and directed the implementation. Codex and Antigravity were used to assist with implementation, review, debugging, documentation, and iterative refinement.
 
@@ -340,7 +365,7 @@ The owner reviewed generated outputs, tested functionality, resolved issues thro
 
 The project does not claim that every line was written manually.
 
-## 17. Screenshots and Demo
+## Screenshots and Demo
 
 The planned portfolio presentation will include:
 
@@ -349,10 +374,12 @@ The planned portfolio presentation will include:
 
 Links will be added after the assets have been safely captured and reviewed. No placeholder or unpublished asset URL is included here.
 
-## 18. Licence
+## Licence
 
 The source code is released under the MIT Licence. See the [`LICENSE`](LICENSE) file for the full terms. Project media and assets are subject to the provenance notes in [`docs/ASSET_PROVENANCE.md`](docs/ASSET_PROVENANCE.md).
 
-## 19. Contact
+## Contact
 
-Professional contact details will be provided through the portfolio website. GitHub and portfolio links will be added when published.
+Project source: [github.com/derekwongha/tastelocal-sg](https://github.com/derekwongha/tastelocal-sg)
+
+Professional contact details will be provided through the portfolio website.
