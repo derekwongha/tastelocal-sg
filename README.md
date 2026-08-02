@@ -37,7 +37,7 @@ Built with **React**, **Django REST Framework**, and **MySQL**, the project cove
 
 ## Portfolio Status
 
-TasteLocal SG is a portfolio-ready local demonstration project. Its source is published in the [TasteLocal SG GitHub repository](https://github.com/derekwongha/tastelocal-sg). Curated screenshots are included below, and a short local demo video is planned as a separate presentation asset.
+TasteLocal SG is a portfolio-ready local demonstration project. Its source is published in the [TasteLocal SG GitHub repository](https://github.com/derekwongha/tastelocal-sg). Curated screenshots are included below, and a completed 4 minute 30.700 second captioned local demo video has been prepared as a separate portfolio presentation asset.
 
 The Django/MySQL application is not publicly deployed. Production deployment is not required for this portfolio project.
 
@@ -403,7 +403,7 @@ The gallery highlights the core public, Tourist, and Administrator workflows usi
 
 The complete screenshot set also covers filtered search results, Tourist booking requests, the Vendor dashboard, Vendor booking management, and Vendor availability management.
 
-A planned 3–5 minute local demo video will cover the Tourist, Vendor, and Administrator workflows.
+The completed 4 minute 30.700 second captioned local demo video covers the Tourist, Vendor, and Administrator workflows.
 
 ## Licence
 
