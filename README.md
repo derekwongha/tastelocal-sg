@@ -37,7 +37,7 @@ Built with **React**, **Django REST Framework**, and **MySQL**, the project cove
 
 ## Portfolio Status
 
-TasteLocal SG is a portfolio-ready local demonstration project. Its source is published in the [TasteLocal SG GitHub repository](https://github.com/derekwongha/tastelocal-sg). Curated screenshots and a short local demo video are planned as separate presentation assets.
+TasteLocal SG is a portfolio-ready local demonstration project. Its source is published in the [TasteLocal SG GitHub repository](https://github.com/derekwongha/tastelocal-sg). Curated screenshots are included below, and a short local demo video is planned as a separate presentation asset.
 
 The Django/MySQL application is not publicly deployed. Production deployment is not required for this portfolio project.
 
@@ -371,12 +371,39 @@ The project does not claim that every line was written manually.
 
 ## Screenshots and Demo
 
-The planned portfolio presentation will include:
+The gallery highlights the core public, Tourist, and Administrator workflows using controlled synthetic demonstration data.
 
-- 8–12 curated screenshots using controlled synthetic records; and
-- a planned 3–5 minute local demo video covering the Tourist, Vendor, and Administrator workflows.
+![Public discovery and catalogue search](docs/screenshots/01-public-discovery-landing.png)
 
-Links will be added after the assets have been safely captured and reviewed. No placeholder or unpublished asset URL is included here.
+**Public discovery and catalogue search**
+
+![Live Google Maps catalogue discovery](docs/screenshots/03-google-maps-discovery.png)
+
+**Live Google Maps catalogue discovery**
+
+![Experience details and future availability](docs/screenshots/04-experience-details-availability.png)
+
+**Experience details and future availability**
+
+![Deterministic catalogue fallback when live Gemini is unavailable](docs/screenshots/05-gemini-recommendations-fallback.png)
+
+**Deterministic catalogue fallback when live Gemini is unavailable**
+
+![Tourist itinerary planning](docs/screenshots/07-tourist-itinerary-planner.png)
+
+**Tourist itinerary planning**
+
+![Tourist review submission for an eligible completed booking](docs/screenshots/12-tourist-review-submission.png)
+
+**Tourist review submission for an eligible completed booking**
+
+![Administrator vendor approval workflow](docs/screenshots/11-admin-vendor-approval.png)
+
+**Administrator vendor approval workflow**
+
+The complete screenshot set also covers filtered search results, Tourist booking requests, the Vendor dashboard, Vendor booking management, and Vendor availability management.
+
+A planned 3–5 minute local demo video will cover the Tourist, Vendor, and Administrator workflows.
 
 ## Licence
 
