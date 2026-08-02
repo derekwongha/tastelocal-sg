@@ -115,6 +115,10 @@ Backend versions were verified in the current copied workspace on 31 July 2026. 
 
 ## System Architecture
 
+The following diagram presents the main recruiter-facing architecture and data flow across users, the browser frontend, backend services, optional integrations, and persistence.
+
+![TasteLocal SG portfolio architecture and data flow](docs/tastelocal-architecture.svg)
+
 ```text
 Browser
 ├── React/Vite SPA
