@@ -12,6 +12,7 @@ const DiscoverMap = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [maxPrice, setMaxPrice] = useState(200);
   const [selectedId, setSelectedId] = useState(null);
+  const [mapStatus, setMapStatus] = useState('loading');
 
   useEffect(() => {
     getPublicExperiences()
@@ -39,7 +40,7 @@ const DiscoverMap = () => {
         <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'Discover Map', path: '/discover' }]} />
         <div className="sg-discover-heading">
           <div><span className="sg-eyebrow">Live map discovery</span><h1>Explore Singapore by flavour</h1><p>Filter local experiences and select a card or live marker to inspect its location.</p></div>
-          <span className="sg-live-chip"><i /> Google Maps enabled</span>
+          <span className="sg-live-chip"><i /> {mapStatus === 'ready' ? 'Google Maps enabled' : mapStatus === 'unavailable' ? 'Map unavailable — catalogue active' : 'Loading map'}</span>
         </div>
 
         {loading && <div className="sg-public-loading"><div className="spinner-border text-danger" role="status" /><span>Preparing the discovery map…</span></div>}
@@ -77,7 +78,7 @@ const DiscoverMap = () => {
             </section>
 
             <section className="sg-map-stage">
-              <GoogleMapContainer experiences={filteredExperiences} selectedExperienceId={selectedId} height="100%" onMarkerSelect={setSelectedId} />
+              <GoogleMapContainer experiences={filteredExperiences} selectedExperienceId={selectedId} height="100%" onMarkerSelect={setSelectedId} onMapStatusChange={setMapStatus} />
               {selectedExperience && (
                 <div className="sg-map-selection-card">
                   <button type="button" aria-label="Close selected experience" onClick={() => setSelectedId(null)}>×</button>

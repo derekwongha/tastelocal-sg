@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const GoogleMapContainer = ({ experiences, singleLatLng, singleTitle, selectedExperienceId, height = '350px', onMarkerSelect }) => {
+const GoogleMapContainer = ({ experiences, singleLatLng, singleTitle, selectedExperienceId, height = '350px', onMarkerSelect, onMapStatusChange }) => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const markersByExperienceRef = useRef(new Map());
@@ -13,11 +13,19 @@ const GoogleMapContainer = ({ experiences, singleLatLng, singleTitle, selectedEx
   useEffect(() => {
     if (!apiKey || apiKey.includes('placeholder')) {
       setMapError(true);
+      onMapStatusChange?.('unavailable');
       return undefined;
     }
+
+    const previousAuthFailure = window.gm_authFailure;
+    window.gm_authFailure = () => {
+      previousAuthFailure?.();
+      setMapError(true);
+      onMapStatusChange?.('unavailable');
+    };
     if (window.google?.maps) {
       setScriptLoaded(true);
-      return undefined;
+      return () => { window.gm_authFailure = previousAuthFailure; };
     }
 
     const scriptId = 'google-maps-script';
@@ -30,15 +38,19 @@ const GoogleMapContainer = ({ experiences, singleLatLng, singleTitle, selectedEx
       script.defer = true;
     }
     const handleLoad = () => setScriptLoaded(true);
-    const handleError = () => setMapError(true);
+    const handleError = () => {
+      setMapError(true);
+      onMapStatusChange?.('unavailable');
+    };
     script.addEventListener('load', handleLoad);
     script.addEventListener('error', handleError);
     if (!script.isConnected) document.head.appendChild(script);
     return () => {
       script.removeEventListener('load', handleLoad);
       script.removeEventListener('error', handleError);
+      window.gm_authFailure = previousAuthFailure;
     };
-  }, [apiKey]);
+  }, [apiKey, onMapStatusChange]);
 
   useEffect(() => {
     if (!scriptLoaded || !mapRef.current || !window.google?.maps) return;
@@ -74,6 +86,7 @@ const GoogleMapContainer = ({ experiences, singleLatLng, singleTitle, selectedEx
         ]
       });
       mapInstanceRef.current = map;
+      onMapStatusChange?.('ready');
       markersByExperienceRef.current.clear();
       infoWindowContentRef.current.clear();
       activeInfoWindowRef.current?.close();
@@ -108,8 +121,9 @@ const GoogleMapContainer = ({ experiences, singleLatLng, singleTitle, selectedEx
     } catch (err) {
       console.error('Error during Google Maps initialization:', err);
       setMapError(true);
+      onMapStatusChange?.('unavailable');
     }
-  }, [scriptLoaded, experiences, singleLatLng, singleTitle, onMarkerSelect]);
+  }, [scriptLoaded, experiences, singleLatLng, singleTitle, onMarkerSelect, onMapStatusChange]);
 
   useEffect(() => {
     const activeInfoWindow = activeInfoWindowRef.current;
